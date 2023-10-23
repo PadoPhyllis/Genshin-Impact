@@ -1,0 +1,45 @@
+#选择项目启动的环境
+spring:
+  profiles:
+    active: prod
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.example.pojo
+---
+#开发环境
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql:///my_db_02
+    username: root
+    password: 1624795809
+server:
+  port: 80
+---
+#测试环境
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
+    username: root
+    password: 1624795809
+server:
+  port: 8081
+
+---
+#生产环境
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
+    username: root
+    password: 1624795809
+server:
+  port: 8080
